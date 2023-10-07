@@ -85,5 +85,7 @@ public class UserAccount {
         this.password = password;
         this.boats = boats;
     }
+
+    public UserAccount(){}
 }
 
