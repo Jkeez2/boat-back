@@ -1,9 +1,19 @@
 package com.jkeez.boatback.Dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+
 public class UserRegistrationDTO {
+    @NotBlank(message = "Firstname is required.")
     private String firstName;
+    @NotBlank(message = "Lastname is required.")
     private String lastName;
+    @NotBlank(message = "Email is required.")
+    @Email(message = "Must be a valid email.")
     private String email;
+    @NotBlank(message = "Password is required.")
+    @Pattern(regexp = "^(?=.*[A-Z])(?=.*\\d).{6,}$", message = "Password needs to be at least six characters, one uppercase letter and one number")
     private String password;
 
     // Getters and setters
