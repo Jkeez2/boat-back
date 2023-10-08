@@ -1,5 +1,6 @@
 package com.jkeez.boatback.Controller;
 
+import com.jkeez.boatback.Dto.UserAccountDTO;
 import com.jkeez.boatback.Dto.UserLoginDTO;
 import com.jkeez.boatback.Dto.UserRegistrationDTO;
 import com.jkeez.boatback.Entity.UserAccount;
@@ -35,7 +36,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody UserLoginDTO userLoginDTO) {
         UserAccount newUser = authService.loginUser(userLoginDTO);
-        return ResponseEntity.ok(newUser);
+        return ResponseEntity.ok(new UserAccountDTO(newUser));
     }
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
