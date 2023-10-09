@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 public class Boat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long boat_id;
+    private Long boatId;
 
     @Column(name = "NAME")
     private String name;
@@ -22,12 +22,12 @@ public class Boat {
 
     // Getters and setters
 
-    public Long getBoat_id() {
-        return boat_id;
+    public Long getBoatId() {
+        return boatId;
     }
 
-    public void setBoat_id(Long boat_id) {
-        this.boat_id = boat_id;
+    public void setBoatId(Long boatId) {
+        this.boatId = boatId;
     }
 
     public String getName() {
@@ -60,6 +60,10 @@ public class Boat {
         this.name = name;
         this.description = description;
         this.userAccount = userAccount;
+    }
+
+    public Boat() {
+
     }
 }
 

@@ -2,6 +2,8 @@ package com.jkeez.boatback.Service;
 
 
 import com.jkeez.boatback.Entity.UserAccount;
+import com.jkeez.boatback.Exception.BoatException;
+import com.jkeez.boatback.Exception.UserAccountException;
 import com.jkeez.boatback.Repository.UserAccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +25,6 @@ public class UserAccountServiceImpl implements UserAccountService {
     @Override
     public UserAccount findById(Long userId) {
         return userAccountRepository.findById(userId)
-                .orElseThrow();
+                .orElseThrow(() -> new UserAccountException("User not found with id : " + userId));
     }
 }
