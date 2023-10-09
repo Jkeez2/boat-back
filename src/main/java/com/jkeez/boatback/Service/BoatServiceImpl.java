@@ -96,8 +96,8 @@ public class BoatServiceImpl implements BoatService {
      */
     @Override
     public List<Boat> deleteBoat(Long userId, Long boatId) {
-        Boat boatToDelete = this.boatRepository.findById(boatId)
-                .orElseThrow(() -> new BoatException("Can't delete boat with id " + boatId + " : boat not found"));
+        Boat boatToDelete = this.boatRepository.findByBoatIdAndUserAccount_Id(boatId, userId)
+                .orElseThrow(() -> new BoatException("Can't delete boat with id " + boatId + " for user " + userId));
         UserAccount user = boatToDelete.getUserAccount();
 
         // update user's boats list
@@ -119,7 +119,7 @@ public class BoatServiceImpl implements BoatService {
     @Override
     public Boat updateBoat(Long userId, Long boatId, BoatDTO boatDTO) {
         Boat boatToUpdate = this.boatRepository.findByBoatIdAndUserAccount_Id(boatId, userId)
-                .orElseThrow(() -> new BoatException("Can't update boat with id " + boatId + " for user " + boatId));
+                .orElseThrow(() -> new BoatException("Can't update boat with id " + boatId + " for user " + userId));
 
         boatToUpdate.setName(boatDTO.getName());
         boatToUpdate.setDescription(boatDTO.getDescription());

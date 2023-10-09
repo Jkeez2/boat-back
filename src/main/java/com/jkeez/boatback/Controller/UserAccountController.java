@@ -5,6 +5,7 @@ import com.jkeez.boatback.Dto.UserAccountDTO;
 
 import com.jkeez.boatback.Service.BoatService;
 import com.jkeez.boatback.Service.UserAccountService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -70,7 +71,7 @@ public class UserAccountController {
      * @return added boat
      */
     @PostMapping("/{userId}/boats")
-    public ResponseEntity<?> addBoatToUser(@PathVariable Long userId, @RequestBody BoatDTO boatDto) {
+    public ResponseEntity<?> addBoatToUser(@PathVariable Long userId, @Valid @RequestBody BoatDTO boatDto) {
         return new ResponseEntity<>(new BoatDTO(boatService.addBoatToUser(userId, boatDto)), HttpStatus.CREATED);
     }
 
