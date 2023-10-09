@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import  org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
@@ -15,16 +14,26 @@ import org.springframework.security.config.annotation.web.configurers.AbstractHt
 
 import java.util.Arrays;
 
+/**
+ * Spring security configuration class
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
 
+    /**
+     * Password encryption bean
+     * @return password encoder
+     */
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-
+    /**
+     * CORS configuration's bean
+     * @return source configuration
+     */
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -39,8 +48,15 @@ public class SecurityConfiguration {
         return source;
     }
 
+    /**
+     * Bean for authorizing requests.
+     * @param http http
+     * @return security filter chain
+     * @throws Exception e
+     */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        // TODO add spring security authorization
         http.authorizeHttpRequests((authz) -> authz
                 .anyRequest().permitAll()
         ).httpBasic(Customizer.withDefaults()).csrf(AbstractHttpConfigurer::disable);

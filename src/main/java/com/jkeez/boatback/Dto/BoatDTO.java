@@ -2,6 +2,9 @@ package com.jkeez.boatback.Dto;
 
 import com.jkeez.boatback.Entity.Boat;
 
+/**
+ * Represents a boat DTO for HTTP communications
+ */
 public class BoatDTO {
     private Long id;
     private String name;
@@ -40,6 +43,8 @@ public class BoatDTO {
     public void setUserAccountId(Long userAccountId) {
         this.userAccountId = userAccountId;
     }
+
+    // constructors
 
     public BoatDTO(Boat boat) {
         this.id = boat.getBoatId();

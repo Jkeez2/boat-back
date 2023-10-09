@@ -4,6 +4,9 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
+/**
+ * Represents a new user account to add, when user registers its data
+ */
 public class UserRegistrationDTO {
     @NotBlank(message = "Firstname is required.")
     private String firstName;
@@ -17,7 +20,6 @@ public class UserRegistrationDTO {
     private String password;
 
     // Getters and setters
-
 
     public String getFirstName() {
         return firstName;

@@ -5,6 +5,9 @@ import com.jkeez.boatback.Entity.Boat;
 
 import java.util.List;
 
+/**
+ * BoatService interface
+ */
 public interface BoatService {
 
     Boat findById(Long boatId);
