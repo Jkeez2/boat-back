@@ -1,5 +1,8 @@
 package com.jkeez.boatback.Dto;
 
+/**
+ * Represents the User's credentials when he tries to log in
+ */
 public class UserLoginDTO {
     private String email;
     private String password;

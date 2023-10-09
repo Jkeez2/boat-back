@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Authentication controller that handles login and register requests with parameter validations.
+ */
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -27,18 +30,33 @@ public class AuthController {
         this.authService = authService;
     }
 
+    /**
+     * Handles register requests with given user information
+     * @param registrationDTO user information
+     * @return entity response with created user
+     */
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@Valid @RequestBody UserRegistrationDTO registrationDTO) {
         UserAccount newUser = authService.registerNewUser(registrationDTO);
         return new ResponseEntity<>(newUser, HttpStatus.CREATED);
     }
 
+    /**
+     * Handles login requests with given credentials.
+     * @param userLoginDTO user's credentials
+     * @return logged in user
+     */
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody UserLoginDTO userLoginDTO) {
         UserAccount newUser = authService.loginUser(userLoginDTO);
         return ResponseEntity.ok(new UserAccountDTO(newUser));
     }
 
+    /**
+     * Handles MethodArgumentNotValidException
+     * @param ex exception
+     * @return errors
+     */
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(

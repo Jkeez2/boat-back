@@ -5,6 +5,9 @@ import com.jkeez.boatback.Entity.UserAccount;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Represents a UserAccount DTO for HTTP communication
+ */
 public class UserAccountDTO {
     private Long id;
     private String firstName;
@@ -14,8 +17,6 @@ public class UserAccountDTO {
     private List<BoatDTO> boats;
 
     // Getters and setters
-
-
     public Long getId() {
         return id;
     }
@@ -64,6 +65,7 @@ public class UserAccountDTO {
         this.boats = boats;
     }
 
+    // constructors
     public UserAccountDTO(){}
 
     public UserAccountDTO(UserAccount userAccount) {

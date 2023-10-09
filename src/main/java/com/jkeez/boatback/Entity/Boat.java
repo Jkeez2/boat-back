@@ -3,6 +3,9 @@ package com.jkeez.boatback.Entity;
 import jakarta.persistence.*;
 
 
+/**
+ * Entity representing a boat.
+ */
 @Entity
 @Table(name = "BOAT")
 public class Boat {
