@@ -1,12 +1,17 @@
 package com.jkeez.boatback.Dto;
 
 import com.jkeez.boatback.Entity.Boat;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * Represents a boat DTO for HTTP communications
  */
 public class BoatDTO {
+
     private Long id;
+    @NotBlank
     private String name;
     private String description;
     private Long userAccountId;
